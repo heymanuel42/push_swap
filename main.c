@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:54:33 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/11/18 16:09:27 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/11/18 18:28:58 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 int	check_is_numeric(const char *arg)
 {
 	int		j;
+
 	while (j < ft_strlen(arg))
 	{
 		if (!ft_isdigit(arg[j])
@@ -111,26 +112,17 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	avg = avg / a->nb_el;
-	//ft_printf("%d\n", avg);
 	i = 0;
-	//push all > than avg in b
 	while (has_greather(a, avg))
 	{
-		//ft_printf("%d > %d\n",a->data[i], avg);
 		if (a->data[0] > avg)
 		{
 			push(a, b, 1);
-			//ft_printf("stack_b : ");
-			//print_stack(*b);
-			//ft_printf("stack_a : ");
-			//print_stack(*a);
 			nbp++;
 		}
 		else
 		{
 			rotate(a, 1);
-			//ft_printf("stack_a : ");
-			//print_stack(*a);
 		}
 		i++;
 	}

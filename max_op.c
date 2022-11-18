@@ -1,30 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo.c                                             :+:      :+:    :+:   */
+/*   max_op.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 18:47:57 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/11/18 18:48:08 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/11/18 10:54:32 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/11/18 18:47:45 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algo.h"
 
-void	push_stack(t_stack *from, t_stack *to)
+void	rotate_max(t_stack *stack)
 {
-	while (from->nb_el > 0)
-		push(from, to, 1);
+	while (get_max(stack) != 0)
+		rotate(stack, 1);
 }
 
-void	do_rotate(t_stack *stack)
+void	rrotate_max(t_stack *stack)
 {
-	int	min_idx;
+	while (get_max(stack) != 0)
+		rrotate(stack, 1);
+}
 
-	min_idx = get_min(stack);
-	if (min_idx > stack->nb_el / 2)
-		rrotate_min(stack);
-	else
-		rotate_min(stack);
+int	get_max(t_stack *stack)
+{
+	int	i;
+	int	max;
+	int	max_idx;
+
+	i = 0;
+	max = -1;
+	max_idx = -1;
+	while (i < stack->nb_el)
+	{
+		if (max < stack->data[i])
+		{
+			max = stack->data[i];
+			max_idx = i;
+		}
+		i++;
+	}
+	return (max_idx);
 }
