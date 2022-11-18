@@ -14,17 +14,17 @@
 
 void	rotate_min(t_stack *stack)
 {
-	while (get_min(stack) != 0)
+	while (get_min(stack, NULL) != 0)
 		rotate(stack, 1);
 }
 
 void	rrotate_min(t_stack *stack)
 {
-	while (get_min(stack) != 0)
+	while (get_min(stack, NULL) != 0)
 		rrotate(stack, 1);
 }
 
-int	get_min(t_stack *stack)
+int	get_min(t_stack *stack, int	*v_min)
 {
 	int	i;
 	int	min;
@@ -42,5 +42,7 @@ int	get_min(t_stack *stack)
 		}
 		i++;
 	}
+	if(v_min != NULL)
+		*v_min = min;
 	return (min_idx);
 }

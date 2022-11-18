@@ -101,7 +101,19 @@ int	main(int argc, char **argv)
 		ft_printf("error\n");
 		return (-1);
 	}
-
+	
+	int a_min = 0;
+	get_min(a, &a_min);
+	while(a->data[0] != a_min)
+		push(a, b, 1);
+	rrotate(a, 1);
+	int b_min = 0;
+	get_min(b, &b_min);
+	while(b->data[0] != b_min)
+		rotate(b, 1);
+	push(b, a, 1);
+	rotate(a, 1);
+	
 	free(a);
 	free(b);
 	return (0);

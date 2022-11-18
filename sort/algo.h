@@ -33,7 +33,7 @@ void	push_stack(t_stack *from, t_stack *to);
 /// @brief return the position of the smalest number in given stack
 /// @param stack
 /// @return
-int		get_min(t_stack *stack);
+int		get_min(t_stack *stack, int  *v_min);
 
 /// @brief select the appropriate rotation to do arround min element
 /// @param stack
@@ -57,7 +57,7 @@ void	push_stack(t_stack *from, t_stack *to);
 /// @brief return the position of the smalest number in given stack
 /// @param stack
 /// @return
-int		get_max(t_stack *stack);
+int		get_max(t_stack *stack, int *v_max);
 
 /// @brief select the appropriate rotation to do arround max element
 /// @param stack 

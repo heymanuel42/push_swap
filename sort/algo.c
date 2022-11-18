@@ -22,7 +22,7 @@ void	do_rotate_min(t_stack *stack)
 {
 	int	min_idx;
 
-	min_idx = get_max(stack);
+	min_idx = get_max(stack, NULL);
 	if (min_idx > stack->nb_el / 2)
 		rrotate_max(stack);
 	else
@@ -33,7 +33,7 @@ void	do_rotate_max(t_stack *stack)
 {
 	int	min_idx;
 
-	min_idx = get_max(stack);
+	min_idx = get_max(stack, NULL);
 	if (min_idx > stack->nb_el / 2)
 		rrotate_max(stack);
 	else

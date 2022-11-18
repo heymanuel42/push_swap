@@ -14,17 +14,17 @@
 
 void	rotate_max(t_stack *stack)
 {
-	while (get_max(stack) != 0)
+	while (get_max(stack, NULL) != 0)
 		rotate(stack, 1);
 }
 
 void	rrotate_max(t_stack *stack)
 {
-	while (get_max(stack) != 0)
+	while (get_max(stack, NULL) != 0)
 		rrotate(stack, 1);
 }
 
-int	get_max(t_stack *stack)
+int	get_max(t_stack *stack, int  *v_max)
 {
 	int	i;
 	int	max;
@@ -42,5 +42,7 @@ int	get_max(t_stack *stack)
 		}
 		i++;
 	}
+	if(v_max != NULL)
+		*v_max = max;
 	return (max_idx);
 }
