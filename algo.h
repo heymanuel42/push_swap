@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 10:51:26 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/11/18 11:28:05 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/11/18 15:56:24 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ void	push_stack(t_stack *from, t_stack *to);
 /// @param stack 
 /// @return 
 int		get_min(t_stack *stack);
+
+/// @brief return the position of the smalest number in given stack
+/// @param stack 
+/// @return 
+int	get_max(t_stack *stack);
 
 /// @brief select the appropriate rotation to do
 /// @param stack 

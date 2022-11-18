@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:54:33 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/11/18 11:37:56 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:09:27 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,20 @@ t_stack	*build_stack(int n, char **data, int id)
 	return (stack);
 }
 
+int	has_greather(t_stack *stack, int a)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack->nb_el)
+	{
+		if (stack->data[i] > a)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
@@ -86,13 +100,63 @@ int	main(int argc, char **argv)
 		ft_printf("error\n");
 		return (-1);
 	}
-	while (a->nb_el > 0)
+	int	avg;
+	int	i;
+	int	nbp = 0;
+	i = 0;
+	//compute avg
+	while (i < a->size)
 	{
-		do_rotate(a);
-		push(a, b, 1);
+		avg += a->data[i];
+		i++;
 	}
-	push_stack(b, a);
+	avg = avg / a->nb_el;
+	//ft_printf("%d\n", avg);
+	i = 0;
+	//push all > than avg in b
+	while (has_greather(a, avg))
+	{
+		//ft_printf("%d > %d\n",a->data[i], avg);
+		if (a->data[0] > avg)
+		{
+			push(a, b, 1);
+			//ft_printf("stack_b : ");
+			//print_stack(*b);
+			//ft_printf("stack_a : ");
+			//print_stack(*a);
+			nbp++;
+		}
+		else
+		{
+			rotate(a, 1);
+			//ft_printf("stack_a : ");
+			//print_stack(*a);
+		}
+		i++;
+	}
+	//sort b
+	 while (b->nb_el > 0)
+	 {
+	 	do_rotate(b);
+	 	push(b, a, 1);
+	 }
+	 int temp = a->nb_el - nbp;
+	 while(temp > 0)
+	 {
+		rrotate(a, 1);
+		push(a, b, 1);
+		temp--;
+	 }
+
+	//sort b
+	 while (b->nb_el > 0)
+	 {
+	 	do_rotate(b);
+	 	push(b, a, 1);
+	 }
+	//push_stack(b, a);
 	//print_stack(*a);
+	//print_stack(*b);
 	free(a);
 	free(b);
 	return (0);
