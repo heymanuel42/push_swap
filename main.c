@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "algo.h"
+#include "sort/algo.h"
 #include <stdlib.h>
 
 int	check_is_numeric(const char *arg)
@@ -101,54 +101,7 @@ int	main(int argc, char **argv)
 		ft_printf("error\n");
 		return (-1);
 	}
-	int	avg;
-	int	i;
-	int	nbp = 0;
-	i = 0;
-	//compute avg
-	while (i < a->size)
-	{
-		avg += a->data[i];
-		i++;
-	}
-	avg = avg / a->nb_el;
-	i = 0;
-	while (has_greather(a, avg))
-	{
-		if (a->data[0] > avg)
-		{
-			push(a, b, 1);
-			nbp++;
-		}
-		else
-		{
-			rotate(a, 1);
-		}
-		i++;
-	}
-	//sort b
-	 while (b->nb_el > 0)
-	 {
-	 	do_rotate(b);
-	 	push(b, a, 1);
-	 }
-	 int temp = a->nb_el - nbp;
-	 while(temp > 0)
-	 {
-		rrotate(a, 1);
-		push(a, b, 1);
-		temp--;
-	 }
 
-	//sort b
-	 while (b->nb_el > 0)
-	 {
-	 	do_rotate(b);
-	 	push(b, a, 1);
-	 }
-	//push_stack(b, a);
-	//print_stack(*a);
-	//print_stack(*b);
 	free(a);
 	free(b);
 	return (0);

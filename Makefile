@@ -1,13 +1,15 @@
 
 
 NAME		= push_swap
-SRC			= main.c algo_utils.c max_op.c min_op.c commands/commands.c\
-				commands/commands_utils.c algo.c
+SRC			= main.c \
+				sort/max_op.c sort/min_op.c sort/algo.c\
+				commands/commands.c commands/commands_utils.c\
+				
 
 LIBFT		= libft/libft.a
 
 all: $(LIBFT)
-	cc $(SRC) $(LIBFT) -o $(NAME);
+	gcc $(SRC) $(LIBFT) -o $(NAME);
 
 $(LIBFT):
 	make -C libft/

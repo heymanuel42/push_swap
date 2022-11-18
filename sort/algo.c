@@ -18,13 +18,24 @@ void	push_stack(t_stack *from, t_stack *to)
 		push(from, to, 1);
 }
 
-void	do_rotate(t_stack *stack)
+void	do_rotate_min(t_stack *stack)
 {
 	int	min_idx;
 
-	min_idx = get_min(stack);
+	min_idx = get_max(stack);
 	if (min_idx > stack->nb_el / 2)
-		rrotate_min(stack);
+		rrotate_max(stack);
 	else
-		rotate_min(stack);
+		rotate_max(stack);
+}
+
+void	do_rotate_max(t_stack *stack)
+{
+	int	min_idx;
+
+	min_idx = get_max(stack);
+	if (min_idx > stack->nb_el / 2)
+		rrotate_max(stack);
+	else
+		rotate_max(stack);
 }
