@@ -1,0 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/18 10:54:32 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/11/18 11:27:54 by ejanssen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "algo.h"
+
+void	rotate_min(t_stack *stack)
+{
+	while (get_min(stack) != 0)
+		rotate(stack, 1);
+}
+
+void	rrotate_min(t_stack *stack)
+{
+	while (get_min(stack) != 0)
+		rrotate(stack, 1);
+}
+
+void	push_stack(t_stack *from, t_stack *to)
+{
+	while (from->nb_el > 0)
+		push(from, to, 1);
+}
+
+void	do_rotate(t_stack *stack)
+{
+	int	min_idx;
+
+	min_idx = get_min(stack);
+	if (min_idx > stack->nb_el / 2)
+		rrotate_min(stack);
+	else
+		rotate_min(stack);
+}
+
+int	get_min(t_stack *stack)
+{
+	int	i;
+	int	min;
+	int	min_idx;
+
+	i = 0;
+	min = __INT_MAX__;
+	min_idx = -1;
+	while (i < stack->nb_el)
+	{
+		if (min > stack->data[i])
+		{
+			min = stack->data[i];
+			min_idx = i;
+		}
+		i++;
+	}
+	return (min_idx);
+}
